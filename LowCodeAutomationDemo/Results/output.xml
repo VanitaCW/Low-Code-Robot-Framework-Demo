@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.7.6 on darwin)" generated="20211206 19:49:50.591" rpa="true" schemaversion="2">
+<suite id="s1" name="Grocerylist" source="/Users/vanitawashington/PycharmProjects/LowCodeAutomationDemo/tests/grocerylist.robot">
+<kw name="Begin Web Test" library="Common" type="SETUP">
+<kw name="Configure Chrome" library="ChromeOptions">
+<kw name="Evaluate" library="BuiltIn">
+<var>${options}</var>
+<arg>selenium.webdriver.ChromeOptions()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20211206 19:49:50.775" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7fe775a93950&gt;</msg>
+<status status="PASS" starttime="20211206 19:49:50.775" endtime="20211206 19:49:50.775"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--incognito</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20211206 19:49:50.775" endtime="20211206 19:49:50.775"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-notifications</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20211206 19:49:50.776" endtime="20211206 19:49:50.776"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>Chrome</arg>
+<arg>chrome_options=${options}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20211206 19:49:50.776" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20211206 19:49:50.776" endtime="20211206 19:49:53.261"/>
+</kw>
+<status status="PASS" starttime="20211206 19:49:50.774" endtime="20211206 19:49:53.262"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20211206 19:49:53.262" level="INFO">Opening url 'https://www.target.com/'</msg>
+<status status="PASS" starttime="20211206 19:49:53.262" endtime="20211206 19:49:55.989"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20211206 19:49:55.989" endtime="20211206 19:49:56.331"/>
+</kw>
+<status status="PASS" starttime="20211206 19:49:50.774" endtime="20211206 19:49:56.332"/>
+</kw>
+<test id="s1-t1" name="Set Location">
+<kw name="Select Location" library="SetLocation">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//div[@class='h-text-bold h-text-md']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 19:49:56.334" level="INFO">Clicking element '//div[@class='h-text-bold h-text-md']'.</msg>
+<status status="PASS" starttime="20211206 19:49:56.334" endtime="20211206 19:49:56.709"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//input[@id='zipOrCityState']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211206 19:49:56.709" endtime="20211206 19:49:57.031"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>//input[@id='zipOrCityState']</arg>
+<arg>${zipcode}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211206 19:49:57.032" level="INFO">Typing text '77054' into text field '//input[@id='zipOrCityState']'.</msg>
+<status status="PASS" starttime="20211206 19:49:57.031" endtime="20211206 19:49:57.252"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//button[normalize-space()='Lookup']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211206 19:49:57.252" level="INFO">Clicking button '//button[normalize-space()='Lookup']'.</msg>
+<status status="PASS" starttime="20211206 19:49:57.252" endtime="20211206 19:49:57.320"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css:button[aria-label='Set Houston South Main as my store']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211206 19:49:57.320" endtime="20211206 19:49:57.548"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>css:button[aria-label='Set Houston South Main as my store']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211206 19:49:57.549" level="INFO">Clicking button 'css:button[aria-label='Set Houston South Main as my store']'.</msg>
+<status status="PASS" starttime="20211206 19:49:57.548" endtime="20211206 19:49:57.705"/>
+</kw>
+<status status="PASS" starttime="20211206 19:49:56.333" endtime="20211206 19:49:57.705"/>
+</kw>
+<status status="PASS" starttime="20211206 19:49:56.332" endtime="20211206 19:49:57.705"/>
+</test>
+<test id="s1-t2" name="Start Shopping">
+<kw name="Get Items" library="Shopping">
+<kw name="Get Dictionary Keys" library="Collections">
+<var>${keys}</var>
+<arg>${ITEMS}</arg>
+<arg>sort_keys=False</arg>
+<doc>Returns keys of the given ``dictionary`` as a list.</doc>
+<msg timestamp="20211206 19:49:57.708" level="INFO">${keys} = ['coconut cream', 'baking powder', 'can pumpkin', 'cabbage', 'spam']</msg>
+<status status="PASS" starttime="20211206 19:49:57.707" endtime="20211206 19:49:57.708"/>
+</kw>
+<kw name="Get Dictionary Values" library="Collections">
+<var>${values}</var>
+<arg>${ITEMS}</arg>
+<arg>sort_keys=False</arg>
+<doc>Returns values of the given ``dictionary`` as a list.</doc>
+<msg timestamp="20211206 19:49:57.708" level="INFO">${values} = [["//a[@id='coconut cream']//b[contains(text(),'coconut cream')]", "//a[@aria-label='Goya Cream of Coconut - 15oz Can']", "//button[@aria-label='Add Goya Coconut Milk - 13.5oz for pickup']"], ["//a[@i...</msg>
+<status status="PASS" starttime="20211206 19:49:57.708" endtime="20211206 19:49:57.708"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${length}</var>
+<arg>${keys}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20211206 19:49:57.709" level="INFO">Length is 5</msg>
+<msg timestamp="20211206 19:49:57.709" level="INFO">${length} = 5</msg>
+<status status="PASS" starttime="20211206 19:49:57.708" endtime="20211206 19:49:57.709"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${outofstock}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20211206 19:49:57.709" level="INFO">${outofstock} = []</msg>
+<status status="PASS" starttime="20211206 19:49:57.709" endtime="20211206 19:49:57.709"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${index}</var>
+<value>0</value>
+<value>${length}</value>
+<iter>
+<var name="${index}">0</var>
+<kw name="Get From List" library="Collections">
+<var>${ingredient}</var>
+<arg>${keys}</arg>
+<arg>${index}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:49:57.710" level="INFO">${ingredient} = coconut cream</msg>
+<status status="PASS" starttime="20211206 19:49:57.710" endtime="20211206 19:49:57.710"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${locators}</var>
+<arg>${values}</arg>
+<arg>${index}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:49:57.710" level="INFO">${locators} = ["//a[@id='coconut cream']//b[contains(text(),'coconut cream')]", "//a[@aria-label='Goya Cream of Coconut - 15oz Can']", "//button[@aria-label='Add Goya Coconut Milk - 13.5oz for pickup']"]</msg>
+<status status="PASS" starttime="20211206 19:49:57.710" endtime="20211206 19:49:57.710"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${search_elem}</var>
+<arg>${locators}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:49:57.711" level="INFO">${search_elem} = //a[@id='coconut cream']//b[contains(text(),'coconut cream')]</msg>
+<status status="PASS" starttime="20211206 19:49:57.710" endtime="20211206 19:49:57.711"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${item_elem}</var>
+<arg>${locators}</arg>
+<arg>1</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:49:57.711" level="INFO">${item_elem} = //a[@aria-label='Goya Cream of Coconut - 15oz Can']</msg>
+<status status="PASS" starttime="20211206 19:49:57.711" endtime="20211206 19:49:57.711"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${pickup_elem}</var>
+<arg>${locators}</arg>
+<arg>2</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:49:57.712" level="INFO">${pickup_elem} = //button[@aria-label='Add Goya Coconut Milk - 13.5oz for pickup']</msg>
+<status status="PASS" starttime="20211206 19:49:57.711" endtime="20211206 19:49:57.712"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:#search</arg>
+<arg>${ingredient}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211206 19:49:57.712" level="INFO">Typing text 'coconut cream' into text field 'css:#search'.</msg>
+<status status="PASS" starttime="20211206 19:49:57.712" endtime="20211206 19:49:58.005"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>None</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20211206 19:49:58.006" level="INFO">Sending key(s) ('ENTER',) to page.</msg>
+<msg timestamp="20211206 19:49:58.006" level="INFO">Pressing special key ENTER to browser.</msg>
+<msg timestamp="20211206 19:49:58.006" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20211206 19:49:58.005" endtime="20211206 19:49:58.213"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:01.214" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:49:58.213" endtime="20211206 19:50:01.214"/>
+</kw>
+<kw name="Select Item" library="SelectSuggestion">
+<arg>${search_elem}</arg>
+<status status="PASS" starttime="20211206 19:50:01.214" endtime="20211206 19:50:02.058"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:05.059" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:02.058" endtime="20211206 19:50:05.059"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//label[@for='checkboxOrderPickupFacet']//div[@class='styles__CheckboxVisual-sc-1v63imw-5 gxIeGa']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211206 19:50:05.059" endtime="20211206 19:50:05.088"/>
+</kw>
+<if>
+<branch type="IF" condition="${index} == 0">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:label[for='checkboxOrderPickupFacet'] div[class='styles__CheckboxVisual-sc-1v63imw-5 gxIeGa']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:05.088" level="INFO">Clicking element 'css:label[for='checkboxOrderPickupFacet'] div[class='styles__CheckboxVisual-sc-1v63imw-5 gxIeGa']'.</msg>
+<status status="PASS" starttime="20211206 19:50:05.088" endtime="20211206 19:50:05.855"/>
+</kw>
+<status status="PASS" starttime="20211206 19:50:05.088" endtime="20211206 19:50:05.855"/>
+</branch>
+<status status="PASS" starttime="20211206 19:50:05.088" endtime="20211206 19:50:05.855"/>
+</if>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:08.857" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:05.856" endtime="20211206 19:50:08.858"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${pickup_elem}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20211206 19:50:08.858" endtime="20211206 19:50:09.186"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${pickup_elem}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:09.186" level="INFO">Clicking button '//button[@aria-label='Add Goya Coconut Milk - 13.5oz for pickup']'.</msg>
+<status status="PASS" starttime="20211206 19:50:09.186" endtime="20211206 19:50:09.623"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:12.624" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:09.623" endtime="20211206 19:50:12.624"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//button[normalize-space()='Continue shopping']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:12.625" level="INFO">Clicking button '//button[normalize-space()='Continue shopping']'.</msg>
+<status status="PASS" starttime="20211206 19:50:12.624" endtime="20211206 19:50:12.841"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:#search</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:12.842" level="INFO">Clicking element 'css:#search'.</msg>
+<status status="PASS" starttime="20211206 19:50:12.841" endtime="20211206 19:50:12.918"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//span[@class='sc-gsTCUz ghTyzu']//div[@class='sc-hKgILt gTLZXx']//*[name()='svg']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:12.919" level="INFO">Clicking element '//span[@class='sc-gsTCUz ghTyzu']//div[@class='sc-hKgILt gTLZXx']//*[name()='svg']'.</msg>
+<status status="PASS" starttime="20211206 19:50:12.918" endtime="20211206 19:50:12.985"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:14.986" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:12.985" endtime="20211206 19:50:14.986"/>
+</kw>
+<status status="PASS" starttime="20211206 19:49:57.709" endtime="20211206 19:50:14.986"/>
+</iter>
+<iter>
+<var name="${index}">1</var>
+<kw name="Get From List" library="Collections">
+<var>${ingredient}</var>
+<arg>${keys}</arg>
+<arg>${index}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:14.987" level="INFO">${ingredient} = baking powder</msg>
+<status status="PASS" starttime="20211206 19:50:14.987" endtime="20211206 19:50:14.987"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${locators}</var>
+<arg>${values}</arg>
+<arg>${index}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:14.988" level="INFO">${locators} = ["//a[@id='baking powder']//b[contains(text(),'baking powder')]", " //a[@aria-label='Clabber Girl Gluten Free Double Acting Baking Powder - 8.1oz']", "//button[@aria-label='Add Clabber Girl Gluten Fre...</msg>
+<status status="PASS" starttime="20211206 19:50:14.987" endtime="20211206 19:50:14.988"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${search_elem}</var>
+<arg>${locators}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:14.988" level="INFO">${search_elem} = //a[@id='baking powder']//b[contains(text(),'baking powder')]</msg>
+<status status="PASS" starttime="20211206 19:50:14.988" endtime="20211206 19:50:14.988"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${item_elem}</var>
+<arg>${locators}</arg>
+<arg>1</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:14.988" level="INFO">${item_elem} =  //a[@aria-label='Clabber Girl Gluten Free Double Acting Baking Powder - 8.1oz']</msg>
+<status status="PASS" starttime="20211206 19:50:14.988" endtime="20211206 19:50:14.989"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${pickup_elem}</var>
+<arg>${locators}</arg>
+<arg>2</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:14.989" level="INFO">${pickup_elem} = //button[@aria-label='Add Clabber Girl Gluten Free Double Acting Baking Powder - 8.1oz for pickup']</msg>
+<status status="PASS" starttime="20211206 19:50:14.989" endtime="20211206 19:50:14.989"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:#search</arg>
+<arg>${ingredient}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:14.990" level="INFO">Typing text 'baking powder' into text field 'css:#search'.</msg>
+<status status="PASS" starttime="20211206 19:50:14.989" endtime="20211206 19:50:15.154"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>None</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20211206 19:50:15.154" level="INFO">Sending key(s) ('ENTER',) to page.</msg>
+<msg timestamp="20211206 19:50:15.154" level="INFO">Pressing special key ENTER to browser.</msg>
+<msg timestamp="20211206 19:50:15.154" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20211206 19:50:15.154" endtime="20211206 19:50:15.935"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:18.937" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:15.936" endtime="20211206 19:50:18.937"/>
+</kw>
+<kw name="Select Item" library="SelectSuggestion">
+<arg>${search_elem}</arg>
+<status status="PASS" starttime="20211206 19:50:18.937" endtime="20211206 19:50:19.619"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:22.620" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:19.619" endtime="20211206 19:50:22.620"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//label[@for='checkboxOrderPickupFacet']//div[@class='styles__CheckboxVisual-sc-1v63imw-5 gxIeGa']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211206 19:50:22.620" endtime="20211206 19:50:22.646"/>
+</kw>
+<if>
+<branch type="IF" condition="${index} == 0">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:label[for='checkboxOrderPickupFacet'] div[class='styles__CheckboxVisual-sc-1v63imw-5 gxIeGa']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20211206 19:50:22.647" endtime="20211206 19:50:22.647"/>
+</kw>
+<status status="NOT RUN" starttime="20211206 19:50:22.646" endtime="20211206 19:50:22.647"/>
+</branch>
+<status status="PASS" starttime="20211206 19:50:22.646" endtime="20211206 19:50:22.647"/>
+</if>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:25.647" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:22.647" endtime="20211206 19:50:25.647"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${pickup_elem}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20211206 19:50:25.648" endtime="20211206 19:50:25.940"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${pickup_elem}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:25.940" level="INFO">Clicking button '//button[@aria-label='Add Clabber Girl Gluten Free Double Acting Baking Powder - 8.1oz for pickup']'.</msg>
+<status status="PASS" starttime="20211206 19:50:25.940" endtime="20211206 19:50:26.314"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:29.316" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:26.314" endtime="20211206 19:50:29.316"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//button[normalize-space()='Continue shopping']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:29.316" level="INFO">Clicking button '//button[normalize-space()='Continue shopping']'.</msg>
+<status status="PASS" starttime="20211206 19:50:29.316" endtime="20211206 19:50:29.506"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:#search</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:29.507" level="INFO">Clicking element 'css:#search'.</msg>
+<status status="PASS" starttime="20211206 19:50:29.506" endtime="20211206 19:50:29.561"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//span[@class='sc-gsTCUz ghTyzu']//div[@class='sc-hKgILt gTLZXx']//*[name()='svg']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:29.562" level="INFO">Clicking element '//span[@class='sc-gsTCUz ghTyzu']//div[@class='sc-hKgILt gTLZXx']//*[name()='svg']'.</msg>
+<status status="PASS" starttime="20211206 19:50:29.561" endtime="20211206 19:50:29.636"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:31.639" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:29.636" endtime="20211206 19:50:31.639"/>
+</kw>
+<status status="PASS" starttime="20211206 19:50:14.986" endtime="20211206 19:50:31.639"/>
+</iter>
+<iter>
+<var name="${index}">2</var>
+<kw name="Get From List" library="Collections">
+<var>${ingredient}</var>
+<arg>${keys}</arg>
+<arg>${index}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:31.640" level="INFO">${ingredient} = can pumpkin</msg>
+<status status="PASS" starttime="20211206 19:50:31.639" endtime="20211206 19:50:31.640"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${locators}</var>
+<arg>${values}</arg>
+<arg>${index}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:31.640" level="INFO">${locators} = ["//b[normalize-space()='can pumpkin']", "//a[@aria-label='100% Pure Pumpkin - 15oz - Good &amp; Gather™']", "//button[@aria-label='Add 100% Pure Pumpkin - 15oz - Good &amp; Gather™ for pickup']"]</msg>
+<status status="PASS" starttime="20211206 19:50:31.640" endtime="20211206 19:50:31.640"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${search_elem}</var>
+<arg>${locators}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:31.641" level="INFO">${search_elem} = //b[normalize-space()='can pumpkin']</msg>
+<status status="PASS" starttime="20211206 19:50:31.640" endtime="20211206 19:50:31.641"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${item_elem}</var>
+<arg>${locators}</arg>
+<arg>1</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:31.641" level="INFO">${item_elem} = //a[@aria-label='100% Pure Pumpkin - 15oz - Good &amp; Gather™']</msg>
+<status status="PASS" starttime="20211206 19:50:31.641" endtime="20211206 19:50:31.641"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${pickup_elem}</var>
+<arg>${locators}</arg>
+<arg>2</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:31.642" level="INFO">${pickup_elem} = //button[@aria-label='Add 100% Pure Pumpkin - 15oz - Good &amp; Gather™ for pickup']</msg>
+<status status="PASS" starttime="20211206 19:50:31.641" endtime="20211206 19:50:31.642"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:#search</arg>
+<arg>${ingredient}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:31.642" level="INFO">Typing text 'can pumpkin' into text field 'css:#search'.</msg>
+<status status="PASS" starttime="20211206 19:50:31.642" endtime="20211206 19:50:31.782"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>None</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20211206 19:50:31.783" level="INFO">Sending key(s) ('ENTER',) to page.</msg>
+<msg timestamp="20211206 19:50:31.783" level="INFO">Pressing special key ENTER to browser.</msg>
+<msg timestamp="20211206 19:50:31.783" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20211206 19:50:31.782" endtime="20211206 19:50:32.430"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:35.433" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:32.430" endtime="20211206 19:50:35.433"/>
+</kw>
+<kw name="Select Item" library="SelectSuggestion">
+<arg>${search_elem}</arg>
+<status status="PASS" starttime="20211206 19:50:35.433" endtime="20211206 19:50:36.104"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:39.105" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:36.104" endtime="20211206 19:50:39.105"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//label[@for='checkboxOrderPickupFacet']//div[@class='styles__CheckboxVisual-sc-1v63imw-5 gxIeGa']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211206 19:50:39.105" endtime="20211206 19:50:39.129"/>
+</kw>
+<if>
+<branch type="IF" condition="${index} == 0">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:label[for='checkboxOrderPickupFacet'] div[class='styles__CheckboxVisual-sc-1v63imw-5 gxIeGa']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20211206 19:50:39.130" endtime="20211206 19:50:39.130"/>
+</kw>
+<status status="NOT RUN" starttime="20211206 19:50:39.129" endtime="20211206 19:50:39.130"/>
+</branch>
+<status status="PASS" starttime="20211206 19:50:39.129" endtime="20211206 19:50:39.130"/>
+</if>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:42.132" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:39.130" endtime="20211206 19:50:42.133"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${pickup_elem}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20211206 19:50:42.133" endtime="20211206 19:50:42.422"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${pickup_elem}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:42.423" level="INFO">Clicking button '//button[@aria-label='Add 100% Pure Pumpkin - 15oz - Good &amp; Gather™ for pickup']'.</msg>
+<status status="PASS" starttime="20211206 19:50:42.422" endtime="20211206 19:50:42.825"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:45.827" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:42.825" endtime="20211206 19:50:45.828"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//button[normalize-space()='Continue shopping']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:45.828" level="INFO">Clicking button '//button[normalize-space()='Continue shopping']'.</msg>
+<status status="PASS" starttime="20211206 19:50:45.828" endtime="20211206 19:50:46.009"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:#search</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:46.010" level="INFO">Clicking element 'css:#search'.</msg>
+<status status="PASS" starttime="20211206 19:50:46.010" endtime="20211206 19:50:46.065"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//span[@class='sc-gsTCUz ghTyzu']//div[@class='sc-hKgILt gTLZXx']//*[name()='svg']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:46.066" level="INFO">Clicking element '//span[@class='sc-gsTCUz ghTyzu']//div[@class='sc-hKgILt gTLZXx']//*[name()='svg']'.</msg>
+<status status="PASS" starttime="20211206 19:50:46.065" endtime="20211206 19:50:46.130"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:48.131" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:46.130" endtime="20211206 19:50:48.131"/>
+</kw>
+<status status="PASS" starttime="20211206 19:50:31.639" endtime="20211206 19:50:48.131"/>
+</iter>
+<iter>
+<var name="${index}">3</var>
+<kw name="Get From List" library="Collections">
+<var>${ingredient}</var>
+<arg>${keys}</arg>
+<arg>${index}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:48.132" level="INFO">${ingredient} = cabbage</msg>
+<status status="PASS" starttime="20211206 19:50:48.132" endtime="20211206 19:50:48.132"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${locators}</var>
+<arg>${values}</arg>
+<arg>${index}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:48.132" level="INFO">${locators} = ["//a[@id='cabbage']//b[contains(text(),'cabbage')]", "//picture[@data-test='@web/ProductCard/ProductCardImage/primary']//img[@alt='Organic Green Cabbage - each']", "//button[@aria-label='Add Organic ...</msg>
+<status status="PASS" starttime="20211206 19:50:48.132" endtime="20211206 19:50:48.132"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${search_elem}</var>
+<arg>${locators}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:48.133" level="INFO">${search_elem} = //a[@id='cabbage']//b[contains(text(),'cabbage')]</msg>
+<status status="PASS" starttime="20211206 19:50:48.133" endtime="20211206 19:50:48.133"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${item_elem}</var>
+<arg>${locators}</arg>
+<arg>1</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:48.133" level="INFO">${item_elem} = //picture[@data-test='@web/ProductCard/ProductCardImage/primary']//img[@alt='Organic Green Cabbage - each']</msg>
+<status status="PASS" starttime="20211206 19:50:48.133" endtime="20211206 19:50:48.133"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${pickup_elem}</var>
+<arg>${locators}</arg>
+<arg>2</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:50:48.134" level="INFO">${pickup_elem} = //button[@aria-label='Add Organic Green Cabbage - each for pickup']</msg>
+<status status="PASS" starttime="20211206 19:50:48.134" endtime="20211206 19:50:48.134"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:#search</arg>
+<arg>${ingredient}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:48.134" level="INFO">Typing text 'cabbage' into text field 'css:#search'.</msg>
+<status status="PASS" starttime="20211206 19:50:48.134" endtime="20211206 19:50:48.239"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>None</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20211206 19:50:48.240" level="INFO">Sending key(s) ('ENTER',) to page.</msg>
+<msg timestamp="20211206 19:50:48.240" level="INFO">Pressing special key ENTER to browser.</msg>
+<msg timestamp="20211206 19:50:48.240" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20211206 19:50:48.240" endtime="20211206 19:50:48.900"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:51.901" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:48.900" endtime="20211206 19:50:51.901"/>
+</kw>
+<kw name="Select Item" library="SelectSuggestion">
+<arg>${search_elem}</arg>
+<status status="PASS" starttime="20211206 19:50:51.901" endtime="20211206 19:50:52.401"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:55.402" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:52.401" endtime="20211206 19:50:55.403"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//label[@for='checkboxOrderPickupFacet']//div[@class='styles__CheckboxVisual-sc-1v63imw-5 gxIeGa']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211206 19:50:55.403" endtime="20211206 19:50:55.433"/>
+</kw>
+<if>
+<branch type="IF" condition="${index} == 0">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:label[for='checkboxOrderPickupFacet'] div[class='styles__CheckboxVisual-sc-1v63imw-5 gxIeGa']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20211206 19:50:55.434" endtime="20211206 19:50:55.434"/>
+</kw>
+<status status="NOT RUN" starttime="20211206 19:50:55.433" endtime="20211206 19:50:55.434"/>
+</branch>
+<status status="PASS" starttime="20211206 19:50:55.433" endtime="20211206 19:50:55.434"/>
+</if>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:50:58.434" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:55.434" endtime="20211206 19:50:58.434"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${pickup_elem}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20211206 19:50:58.435" endtime="20211206 19:50:58.724"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${pickup_elem}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211206 19:50:58.724" level="INFO">Clicking button '//button[@aria-label='Add Organic Green Cabbage - each for pickup']'.</msg>
+<status status="PASS" starttime="20211206 19:50:58.724" endtime="20211206 19:50:59.078"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:51:02.079" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:50:59.078" endtime="20211206 19:51:02.079"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//button[normalize-space()='Continue shopping']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211206 19:51:02.079" level="INFO">Clicking button '//button[normalize-space()='Continue shopping']'.</msg>
+<status status="PASS" starttime="20211206 19:51:02.079" endtime="20211206 19:51:02.227"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:#search</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 19:51:02.228" level="INFO">Clicking element 'css:#search'.</msg>
+<status status="PASS" starttime="20211206 19:51:02.228" endtime="20211206 19:51:02.276"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//span[@class='sc-gsTCUz ghTyzu']//div[@class='sc-hKgILt gTLZXx']//*[name()='svg']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 19:51:02.276" level="INFO">Clicking element '//span[@class='sc-gsTCUz ghTyzu']//div[@class='sc-hKgILt gTLZXx']//*[name()='svg']'.</msg>
+<status status="PASS" starttime="20211206 19:51:02.276" endtime="20211206 19:51:02.337"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:51:04.338" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211206 19:51:02.337" endtime="20211206 19:51:04.338"/>
+</kw>
+<status status="PASS" starttime="20211206 19:50:48.131" endtime="20211206 19:51:04.338"/>
+</iter>
+<iter>
+<var name="${index}">4</var>
+<kw name="Get From List" library="Collections">
+<var>${ingredient}</var>
+<arg>${keys}</arg>
+<arg>${index}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:51:04.339" level="INFO">${ingredient} = spam</msg>
+<status status="PASS" starttime="20211206 19:51:04.339" endtime="20211206 19:51:04.339"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${locators}</var>
+<arg>${values}</arg>
+<arg>${index}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:51:04.340" level="INFO">${locators} = ["//a[@id='spam canned meat']//b[contains(text(),'spam')]", "//a[@aria-label='SPAM Classic Lunch Meat - 12oz']", "//button[@aria-label='Add SPAM Classic Lunch Meat - 12oz for pickup']"]</msg>
+<status status="PASS" starttime="20211206 19:51:04.339" endtime="20211206 19:51:04.340"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${search_elem}</var>
+<arg>${locators}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:51:04.340" level="INFO">${search_elem} = //a[@id='spam canned meat']//b[contains(text(),'spam')]</msg>
+<status status="PASS" starttime="20211206 19:51:04.340" endtime="20211206 19:51:04.340"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${item_elem}</var>
+<arg>${locators}</arg>
+<arg>1</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:51:04.341" level="INFO">${item_elem} = //a[@aria-label='SPAM Classic Lunch Meat - 12oz']</msg>
+<status status="PASS" starttime="20211206 19:51:04.340" endtime="20211206 19:51:04.341"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${pickup_elem}</var>
+<arg>${locators}</arg>
+<arg>2</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211206 19:51:04.341" level="INFO">${pickup_elem} = //button[@aria-label='Add SPAM Classic Lunch Meat - 12oz for pickup']</msg>
+<status status="PASS" starttime="20211206 19:51:04.341" endtime="20211206 19:51:04.341"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:#search</arg>
+<arg>${ingredient}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211206 19:51:04.341" level="INFO">Typing text 'spam' into text field 'css:#search'.</msg>
+<status status="PASS" starttime="20211206 19:51:04.341" endtime="20211206 19:51:04.427"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>None</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20211206 19:51:04.428" level="INFO">Sending key(s) ('ENTER',) to page.</msg>
+<msg timestamp="20211206 19:51:04.428" level="INFO">Pressing special key ENTER to browser.</msg>
+<msg timestamp="20211206 19:51:04.428" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20211206 19:51:04.427" endtime="20211206 19:51:04.865"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:51:07.868" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:51:04.865" endtime="20211206 19:51:07.868"/>
+</kw>
+<kw name="Select Item" library="SelectSuggestion">
+<arg>${search_elem}</arg>
+<status status="PASS" starttime="20211206 19:51:07.868" endtime="20211206 19:51:08.427"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:51:11.430" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:51:08.427" endtime="20211206 19:51:11.430"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//label[@for='checkboxOrderPickupFacet']//div[@class='styles__CheckboxVisual-sc-1v63imw-5 gxIeGa']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211206 19:51:11.430" endtime="20211206 19:51:11.460"/>
+</kw>
+<if>
+<branch type="IF" condition="${index} == 0">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:label[for='checkboxOrderPickupFacet'] div[class='styles__CheckboxVisual-sc-1v63imw-5 gxIeGa']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20211206 19:51:11.460" endtime="20211206 19:51:11.460"/>
+</kw>
+<status status="NOT RUN" starttime="20211206 19:51:11.460" endtime="20211206 19:51:11.460"/>
+</branch>
+<status status="PASS" starttime="20211206 19:51:11.460" endtime="20211206 19:51:11.460"/>
+</if>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:51:14.463" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:51:11.461" endtime="20211206 19:51:14.463"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${pickup_elem}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20211206 19:51:14.464" endtime="20211206 19:51:14.740"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${pickup_elem}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211206 19:51:14.741" level="INFO">Clicking button '//button[@aria-label='Add SPAM Classic Lunch Meat - 12oz for pickup']'.</msg>
+<status status="PASS" starttime="20211206 19:51:14.740" endtime="20211206 19:51:15.118"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:51:18.119" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211206 19:51:15.118" endtime="20211206 19:51:18.119"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//button[normalize-space()='Continue shopping']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211206 19:51:18.120" level="INFO">Clicking button '//button[normalize-space()='Continue shopping']'.</msg>
+<status status="PASS" starttime="20211206 19:51:18.119" endtime="20211206 19:51:18.307"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:#search</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 19:51:18.308" level="INFO">Clicking element 'css:#search'.</msg>
+<status status="PASS" starttime="20211206 19:51:18.307" endtime="20211206 19:51:18.360"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//span[@class='sc-gsTCUz ghTyzu']//div[@class='sc-hKgILt gTLZXx']//*[name()='svg']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 19:51:18.360" level="INFO">Clicking element '//span[@class='sc-gsTCUz ghTyzu']//div[@class='sc-hKgILt gTLZXx']//*[name()='svg']'.</msg>
+<status status="PASS" starttime="20211206 19:51:18.360" endtime="20211206 19:51:18.425"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:51:20.426" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211206 19:51:18.425" endtime="20211206 19:51:20.426"/>
+</kw>
+<status status="PASS" starttime="20211206 19:51:04.339" endtime="20211206 19:51:20.426"/>
+</iter>
+<status status="PASS" starttime="20211206 19:49:57.709" endtime="20211206 19:51:20.426"/>
+</for>
+<status status="PASS" starttime="20211206 19:49:57.707" endtime="20211206 19:51:20.426"/>
+</kw>
+<status status="PASS" starttime="20211206 19:49:57.706" endtime="20211206 19:51:20.426"/>
+</test>
+<test id="s1-t3" name="Shopping Done">
+<kw name="Checkout" library="Shopping">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>css:use</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 19:51:20.429" level="INFO">Clicking element 'css:use'.</msg>
+<status status="PASS" starttime="20211206 19:51:20.428" endtime="20211206 19:51:21.690"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:51:23.692" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211206 19:51:21.690" endtime="20211206 19:51:23.692"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>css:.BaseButton-sc-3v3oog-0.ButtonPrimary-sc-9wgfzx-0.gxYtIT.hcoLgH</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211206 19:51:23.693" level="INFO">Clicking button 'css:.BaseButton-sc-3v3oog-0.ButtonPrimary-sc-9wgfzx-0.gxYtIT.hcoLgH'.</msg>
+<status status="PASS" starttime="20211206 19:51:23.692" endtime="20211206 19:51:24.498"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211206 19:51:26.499" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211206 19:51:24.498" endtime="20211206 19:51:26.499"/>
+</kw>
+<kw name="Location Should Contain" library="SeleniumLibrary">
+<arg>PRECHECKOUT</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<msg timestamp="20211206 19:51:26.505" level="INFO">Current location contains 'PRECHECKOUT'.</msg>
+<status status="PASS" starttime="20211206 19:51:26.499" endtime="20211206 19:51:26.505"/>
+</kw>
+<status status="PASS" starttime="20211206 19:51:20.427" endtime="20211206 19:51:26.505"/>
+</kw>
+<status status="PASS" starttime="20211206 19:51:20.427" endtime="20211206 19:51:26.505"/>
+</test>
+<kw name="End Web Test" library="Common" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20211206 19:51:26.506" endtime="20211206 19:51:26.648"/>
+</kw>
+<status status="PASS" starttime="20211206 19:51:26.506" endtime="20211206 19:51:26.649"/>
+</kw>
+<status status="PASS" starttime="20211206 19:49:50.592" endtime="20211206 19:51:26.649"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Grocerylist">Grocerylist</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
